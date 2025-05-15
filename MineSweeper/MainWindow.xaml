@@ -1,0 +1,50 @@
+﻿<Window x:Class="MineSweeper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MineSweeper"
+        mc:Ignorable="d"
+        FontSize="16"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MineSweeper" Height="905" Width="830">
+    <StackPanel AutomationProperties.Name="">
+        <Grid Height="50" x:Name="ActionsGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                <RowDefinition  />
+                </Grid.RowDefinitions>
+
+                <Button 
+                    Click="PrevClickHandler" 
+                    Grid.Column="0" 
+                    Content="Prev Level" 
+                    IsEnabled="false" 
+                    x:Name="PrevBtn"/>
+
+                <Label HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Grid.Column="1"
+                       Content="Level: 1"
+                       x:Name="LevelLabel"
+                />
+
+            <Button Grid.Column="2" x:Name="ResetBtn" Click="ResetClickHandler">Reset</Button>
+
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="3" x:Name="BombLabel" Content="Bombs: "/>
+
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="4" x:Name="TimeLabel" />
+
+                <Button Click="NextClickHandler" Grid.Column="5" Content="Next Level" IsEnabled="false" x:Name="NextBtn" />
+            </Grid>
+
+        <Grid Margin="10" x:Name="MineGrid" Height="800" Width="800"/>
+    </StackPanel>
+</Window>
