@@ -86,7 +86,11 @@ namespace MineSweeper
                 button.Foreground = GetFontColor(state);
                 button.Content = CreateButtonContent(state);
 
-                if (state.type == FieldType.Mine) mgr.OnGameOver();                
+                if (state.type == FieldType.Mine)
+                {
+                    mgr.OnGameOver();
+                    return;
+                }
             }
             mgr.CheckForWin(states.Length);
         }
