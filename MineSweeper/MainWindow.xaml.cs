@@ -11,7 +11,7 @@ namespace MineSweeper
     {
 
         private int seconds = 0;
-        private readonly DispatcherTimer timer;
+        private DispatcherTimer timer;
         private readonly GameManger mgr;
 
         public MainWindow()
@@ -51,6 +51,8 @@ namespace MineSweeper
         private void NextClickHandler(object sender, RoutedEventArgs e)
         {
             mgr.Next();
+            timer.Start();
+            seconds = 0;
             SetPlayField(true);
 
             if (!PrevBtn.IsEnabled)
@@ -72,6 +74,13 @@ namespace MineSweeper
             };
             timer.Start();
             return timer;
+        }
+
+        private void ResetTimer()
+        {
+            TimeLabel.Content = "Time: 0";
+            seconds = 0;
+            timer.Start();
         }
 
         private void GameStateChangeHandler(GameManagerEvents events)
@@ -104,7 +113,8 @@ namespace MineSweeper
                 return;
             }
 
-            ResetClickHandler(ResetBtn, e);             
+            ResetClickHandler(ResetBtn, e);
+            ResetTimer();
         }
 
     }

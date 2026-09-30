@@ -34,7 +34,7 @@
         public MineManager(int level, Action onGameOver, Action onGameWin)
         {
             int size = level * 5;
-            amountOfBombs = (size) / 5 * 4;
+            amountOfBombs = size;
             missingVisibleFields = size * size - amountOfBombs;
             isMine = GenerateMines(size, AmountOfBombs);
             OnGameOver = onGameOver;
